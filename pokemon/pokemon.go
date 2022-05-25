@@ -19,22 +19,25 @@ type (
 		SetHP(int)
 		GetAttack() int
 		BasicAttack(IPokemon)
+		GetTotalAttack() int
 	}
 
 	Pokemon struct {
-		name   string
-		maxHP  int
-		hp     int
-		attack int
+		name        string
+		maxHP       int
+		hp          int
+		attack      int
+		totalAttack int
 	}
 )
 
-func NewPokemon(name string, maxHP int, attack int) *Pokemon {
+func NewPokemon(name string, maxHP int, attack int, totalAttack int) *Pokemon {
 	return &Pokemon{
-		name:   name,
-		maxHP:  maxHP,
-		hp:     maxHP,
-		attack: attack,
+		name:        name,
+		maxHP:       maxHP,
+		hp:          maxHP,
+		attack:      attack,
+		totalAttack: totalAttack,
 	}
 }
 
@@ -69,6 +72,10 @@ func Attack(p IPokemon, target IPokemon, damage int) {
 func (p *Pokemon) BasicAttack(target IPokemon) {
 	damage := p.GetAttack() + rand.Intn(2) + 2
 	Attack(p, target, damage)
+}
+
+func (p *Pokemon) GetTotalAttack() int {
+	return p.totalAttack
 }
 
 func SpecialAttack(p IPokemon, target IPokemon) {

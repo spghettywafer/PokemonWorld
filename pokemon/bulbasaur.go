@@ -1,6 +1,8 @@
 package pokemon
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type (
 	IBulbasaur interface {
@@ -9,12 +11,23 @@ type (
 
 	Bulbasaur struct {
 		Pokemon
+		Monster
+
+		// IShine
 	}
 )
 
-func NewBulbasaur(name string, maxHP int, attack int) *Bulbasaur {
-	newPokemon := NewPokemon(name, maxHP, attack)
-	return &Bulbasaur{Pokemon: *newPokemon}
+type Monster struct {
+	feet int
+}
+
+func NewBulbasaur(name string, maxHP int, attack int, totalAttack int) *Bulbasaur {
+	newPokemon := NewPokemon(name, maxHP, attack, totalAttack)
+	// monster := Monster{feet: 1}
+	bulba := Bulbasaur{
+		Pokemon: *newPokemon,
+	}
+	return &bulba
 }
 
 func (p *Bulbasaur) VineWhip(target IPokemon) {

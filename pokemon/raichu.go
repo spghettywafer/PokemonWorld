@@ -11,8 +11,8 @@ type (
 	}
 )
 
-func NewRaichu(name string, maxHP int, attack int) *Raichu {
-	newPikachu := NewPikachu(name, maxHP, attack)
+func NewRaichu(name string, maxHP int, attack int, totalAttack int) *Raichu {
+	newPikachu := NewPikachu(name, maxHP, attack, totalAttack)
 	return &Raichu{Pikachu: *newPikachu}
 }
 
